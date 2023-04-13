@@ -8,16 +8,29 @@ const acl = require('../auth/middleware/acl');
 
 const router = express.Router();
 
+router.param('model', (req, res, next) => {
+  const modelName = req.params.model;
+  if (dataModules[modelName]) {
+    req.model = dataModules[modelName];
+    next();
+  } else {
+    next('Invalid Model');
+  }
+});
+
 const handleCreate = async (req, res) => {
-  res.status(201).send('Successful POST request to protected route')
+  let newRecord = await req.model.create(req.body)
+  res.status(201).json(newRecord)
 }
 
 const handleGetOne = async (req, res) => {
-  res.status(200).send('Successful GET (one) request to protected route')
+  let singleRecord = await req.model.get(req.params.id);
+  res.status(200).json(singleRecord)
 }
 
 const handleGetAll = async (req, res) => {
-  res.status(200).send('Successful GET (all) request to protected route')
+  let allRecords = await req.model.get();
+  res.status(200).json(allRecords)
 }
 
 const handleUpdatePart = async (req, res) => {
@@ -25,23 +38,25 @@ const handleUpdatePart = async (req, res) => {
 }
 
 const handleUpdateWhole = async (req, res) => {
-  res.status(200).send('Successful PUT request to protected route')
+  let updatedRecord = await req.model.update(req.params.id, req.body);
+  res.status(200).json(updatedRecord);
 }
 
 const handleDelete = async (req, res) => {
-  res.status(200).send('Successful DELETE request to protected route')
+  let deletedRecord = await req.model.delete(req.params.id);
+  res.status(200).json(deletedRecord);
 }
 
-router.post('/', bearer, acl('create'), handleCreate )
+router.post('/:model', bearer, acl('create'), handleCreate )
 
-router.get('/', bearer, acl('read'), handleGetAll )
+router.get('/:model', bearer, acl('read'), handleGetAll )
 
-router.get('/:id', bearer, acl('read'), handleGetOne )
+router.get('/:model/:id', bearer, acl('read'), handleGetOne )
 
-router.patch('/:id', bearer, acl('update'), handleUpdatePart )
+router.patch('/:model/:id', bearer, acl('update'), handleUpdatePart )
 
-router.put('/:id', bearer, acl('update'), handleUpdateWhole )
+router.put('/:model/:id', bearer, acl('update'), handleUpdateWhole )
 
-router.delete('/:id', bearer, acl('delete'), handleDelete )
+router.delete('/:model/:id', bearer, acl('delete'), handleDelete )
 
 module.exports = router;
