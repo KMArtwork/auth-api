@@ -10,6 +10,7 @@ module.exports = async (req, res, next) => {
 
     const token = req.headers.authorization.split(' ').pop();
     const validUser = await users.authenticateToken(token);
+    console.log('BEARER AUTH TOKEN: ', validUser);
     req.user = validUser;
     req.token = validUser.token;
     next();

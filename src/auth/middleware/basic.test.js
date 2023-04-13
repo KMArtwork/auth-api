@@ -17,7 +17,7 @@ beforeAll(async () => {
 
 afterAll(async () => {
   await usersDB.drop();
-})
+});
 
 describe('Testing basic authentication', () => {
 

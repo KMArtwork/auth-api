@@ -50,6 +50,7 @@ const userModel = (sequelize, DataTypes) => {
     try {
       const parsedToken = jwt.verify(token, SECRET);
       const user = this.findOne({where: { username: parsedToken.username } });
+      console.log('FOUND USER: ', user); // test are failing here but when using thunderclient it works??
       if (user) { return user; }
       throw new Error("User Not Found");
     } catch (e) {
