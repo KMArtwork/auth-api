@@ -7,8 +7,8 @@
     "start": "nodemon index.js",
     "db:config": "sequelize init:config",
     "db:create": "sequelize db:create",
-    "test-watch": "SET NODE_ENV=test&& jest --verbose --coverage --watchAll",
-    "test": "SET NODE_ENV=test&& jest  --verbose --coverage"
+    "test-watch": "NODE_ENV=test&& jest --verbose --coverage --watchAll",
+    "test": "NODE_ENV=test&& jest  --verbose --coverage"
   },
   "repository": {
     "type": "git",
