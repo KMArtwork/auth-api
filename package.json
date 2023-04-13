@@ -1,0 +1,20 @@
+{
+  "name": "auth-api",
+  "version": "1.0.0",
+  "description": "Code Fellows - Class 08 - Lab",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KMArtwork/auth-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KMArtwork/auth-api/issues"
+  },
+  "homepage": "https://github.com/KMArtwork/auth-api#readme"
+}
