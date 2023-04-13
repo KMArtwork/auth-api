@@ -8,6 +8,7 @@ const notFoundHandler = require('./error-handlers/404');
 const logger = require('./middleware/logger');
 const authRoutes = require('./auth/routes');
 const v1Routes = require('./routes/v1');
+const v2Routes = require('./routes/v2');
 
 const app = express();
 
@@ -22,6 +23,8 @@ app.use('/api/v1', v1Routes)
 
 // authRoutes handles user Authentication & Authorization
 app.use(authRoutes)
+
+app.use('/api/v2', v2Routes);
 
 app.use('*', notFoundHandler)
 app.use(errorHandler)
