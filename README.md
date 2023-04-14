@@ -7,7 +7,7 @@ URL:  https://auth-api-u82z.onrender.com
 
 ## UML
 
-![Lab 08 UML](./Lab08_UML.JPG)
+![Lab 08 UML](./AuthApi_UML.JPG)
 
 ## GitHub Actions
 
