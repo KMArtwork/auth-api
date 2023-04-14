@@ -47,7 +47,7 @@ describe('Testing bearer authentication', () => {
 
   test('successfully logs in when a token is valid', () => {
     const user = {username: 'kawika'}
-    const token = jwt.sign(user.username, process.env.SECRET);
+    const token = jwt.sign(user, process.env.SECRET);
 
     req.headers.authorization = `Bearer ${token}`;
 

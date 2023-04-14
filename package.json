@@ -4,7 +4,7 @@
   "description": "Code Fellows - Class 08 - Lab",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "nodemon --delay 500ms index.js",
     "db:config": "sequelize init:config",
     "db:create": "sequelize db:create",
     "test-watch": "cross-env NODE_ENV=test jest --verbose --coverage --watchAll",
