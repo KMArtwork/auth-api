@@ -16,7 +16,6 @@ let token;
 
 beforeAll(async() => {
   await usersDB.sync();
-  // await users.create(userInfo)
 })
 
 afterAll(async() => {
